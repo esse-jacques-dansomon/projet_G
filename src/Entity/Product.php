@@ -8,7 +8,9 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * @ORM\InheritanceType("JOINED")
  * @ORM\Entity(repositoryClass=ProductRepository::class)
+ * @ORM\DiscriminatorMap({"product" = "Product", "burger" = "Burger", "menu" = "Menu", "complement" = "Complement"})
  */
 class Product
 {

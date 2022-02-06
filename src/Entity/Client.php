@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * @ORM\Entity(repositoryClass=ClientRepository::class)
  */
-class Client
+class Client extends User
 {
     /**
      * @ORM\Id
@@ -31,8 +31,10 @@ class Client
 
     public function __construct()
     {
+        $this->setRoles(['ROLE_CLIENT']);
         $this->orders = new ArrayCollection();
     }
+    
 
     public function getId(): ?int
     {

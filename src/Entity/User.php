@@ -8,7 +8,9 @@ use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
+ * @ORM\InheritanceType("JOINED")
  * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @ORM\DiscriminatorMap({"user" = "User", "client" = "Client"})
  */
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
