@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} bursil burger / produit } !{% endblock %}
+
+{% block body %}
+<!-- breadcrumb-section -->
+<div class="breadcrumb-section breadcrumb-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <div class="breadcrumb-text">
+                    <p>Detail de produit </p>
+                    <h1>{{ produit.name }}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end breadcrumb section -->
+
+<!-- single product -->
+<div class="single-product mt-150 mb-150">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-5">
+                <div class="single-product-img">
+                    <img src="{{ asset('assets/img/products/product-img-5.jpg') }}" alt="">
+                </div>
+            </div>
+            <div class="col-md-7">
+                <div class="single-product-content">
+                    <h3>{{ produit.name }}</h3>
+                    <p class="single-product-pricing"><span>{{ produit.name }}</span> {{ produit.price~' cffa' }}</p>
+                    <p>{{ produit.description }}</p>
+                    <div class="single-product-form">
+                        <form action="index.html">
+                            <input type="number" placeholder="0">
+                        </form>
+                        <a href="{{ path('add-to-cart', { 'id': produit.id }) }}" class="cart-btn"><i class="fas fa-shopping-cart"></i> ajouter au panier</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end single product -->
+
+{% endblock %}

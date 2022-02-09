@@ -1,0 +1,97 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Restaurant{% endblock %}
+
+{% block body %}
+<!-- breadcrumb-section -->
+<div class="breadcrumb-section breadcrumb-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <div class="breadcrumb-text">
+                    <p>Bienvenue a Bresil Burger</p>
+                    <h1>Nos Offres</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end breadcrumb section -->
+
+<!-- products -->
+<div class="product-section mt-150 mb-150">
+    <div class="container">
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="product-filters">
+                    <ul>
+                        <li class="active" data-filter="*">Tous</li>
+                        <li data-filter=".menues">Menues</li>
+                        <li data-filter=".burgers">Burgers</li>
+                        <li data-filter=".complements">Complements</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="row product-lists">
+            {% for menu in menues %}
+            <div class="col-lg-4 col-md-6 text-center menues">
+                <div class="single-product-item">
+                    <div class="product-image">
+                        <a href="{{ path('product-detail', { 'id': menu.id }) }}">
+                            <img src="{{ asset(menu.image)}}" alt=""></a>
+                    </div>
+                    <h3>{{ menu.name }}</h3>
+                    <p class="product-price"><span>Menu</span> {{ menu.price~' fcfa' }} </p>
+                    <a href="{{ path('add-to-cart', { 'id': menu.id }) }}" class="cart-btn"><i class="fas fa-shopping-cart"></i>Ajouter Au Panier</a>
+                </div>
+            </div>
+            {% endfor %}
+            {% for burger in burgers %}
+
+            <div class="col-lg-4 col-md-6 text-center burgers">
+                <div class="single-product-item">
+                    <div class="product-image">
+                        <a href="{{ path('product-detail', { 'id': burger.id }) }}"><img src="{{ asset(burger.image)}}" alt=""></a>
+                    </div>
+                    <h3>{{ burger.name  }}</h3>
+                    <p class="product-price"><span>Burger</span> {{ burger.price~' fcfa' }} </p>
+                    <a href="{{ path('add-to-cart', { 'id': burger.id }) }}" class="cart-btn"><i class="fas fa-shopping-cart"></i>Ajouter Au Panier</a>
+                </div>
+            </div>
+            {% endfor %}
+            {% for complement in complements %}
+
+            <div class="col-lg-4 col-md-6 text-center complements">
+                <div class="single-product-item">
+                    <div class="product-image">
+                        <a href="{{ path('product-detail', { 'id': complement.id }) }}"><img src="{{ asset(complement.image) }}" alt=""></a>
+                    </div>
+                    <h3>{{ complement.name  }}</h3>
+                    <p class="product-price"><span>Complement</span> {{ complement.price~' fcfa'  }} </p>
+                    <a href="{{ path('add-to-cart', { 'id': complement.id }) }}" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="pagination-wrap">
+                    <ul>
+                        <li><a href="#">Prev</a></li>
+                        <li><a href="#">1</a></li>
+                        <li><a class="active" href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">Next</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end products -->
+{% endblock %}

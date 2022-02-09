@@ -37,7 +37,7 @@ class Burger extends Product
 
     public function getId(): ?int
     {
-        return $this->id;
+        return parent::getId();
     }
 
     public function getDescription(): ?string

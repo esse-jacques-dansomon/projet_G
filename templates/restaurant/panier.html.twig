@@ -1,0 +1,92 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Panier{% endblock %}
+
+{% block body %}
+<!-- breadcrumb-section -->
+<div class="breadcrumb-section breadcrumb-bg">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <div class="breadcrumb-text">
+                    <p>Burger Bresil</p>
+                    <h1>Panier</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end breadcrumb section -->
+
+<!-- cart -->
+<div class="cart-section mt-150 mb-150">
+    <div class="container">
+        {% if total > 0  %}
+        <div class="row">
+            <div class="col-lg-8 col-md-12">
+                <div class="cart-table-wrap">
+                    <table class="cart-table">
+                        <thead class="cart-table-head">
+                        <tr class="table-head-row">
+                            <th class="product-remove"></th>
+                            <th class="product-image">Produit Image</th>
+                            <th class="product-name">Nom</th>
+                            <th class="product-price">Prix</th>
+                            <th class="product-quantity">Quantite</th>
+                            <th class="product-total">Total</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for item in produits %}
+                        <tr class="table-body-row">
+                            <td class="product-remove"><a href="{{ path('remove-to-cart',{'id': item['produit'].id}) }}"><i class="far fa-window-close"></i></a></td>
+                            <td class="product-image"><img src="{{ asset('assets/img/products/product-img-1.jpg') }}" alt=""></td>
+                            <td class="product-name">{{ item['produit'].name }}</td>
+                            <td class="product-price">{{ item['produit'].price~' cfca' }}</td>
+                            <td class="product-quantity"><input type="number" disabled value="{{ item['quantite']}}" placeholder="0"></td>
+                            <td class="product-total">{{ item['produit'].price * item['quantite'] }} cfca </td>
+                        </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-lg-4">
+                <div class="total-section">
+                    <table class="total-table">
+                        <thead class="total-table-head">
+                        <tr class="table-total-row">
+                            <th>Total</th>
+                            <th>prix</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr class="total-data">
+                            <td><strong>Subtotal: </strong></td>
+                            <td>{{ total~' FCFA' }}</td>
+                        </tr>
+                        <tr class="total-data">
+                            <td><strong>Tva : </strong></td>
+                            <td> {{ total* 0.18 }} fcfa</td>
+                        </tr>
+                        <tr class="total-data">
+                            <td><strong>Total: </strong></td>
+                            <td>{{ total + total* 0.18 }} fcfa </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div class="cart-buttons">
+                        <a href="#" class="boxed-btn">Update Cart</a>
+                        <a href="{{ path('checkout') }}" class="boxed-btn black">Check Out</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% else %}
+        Panier vide
+        {% endif %}
+    </div>
+</div>
+<!-- end cart -->
+{% endblock %}

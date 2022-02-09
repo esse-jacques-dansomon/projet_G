@@ -1,4 +1,6 @@
 doctrine:
+    dbal:
+        schema_filter: ~^(migration_versions|table_1|table_2|table_3)$~
     orm:
         auto_generate_proxy_classes: false
         query_cache_driver:

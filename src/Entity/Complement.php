@@ -32,7 +32,7 @@ class Complement extends Product
 
     public function getId(): ?int
     {
-        return $this->id;
+        return parent::getId();
     }
 
     /**

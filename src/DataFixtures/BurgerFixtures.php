@@ -10,12 +10,12 @@ class BurgerFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        for ($i=0; $i < 100; $i++) { 
+        for ($i=0; $i < 15; $i++) {
             $data = new Burger();
-            $data->setName("burger".$i)
+            $data->setName("burger bresil ".$i)
                 ->setPrice(3500+$i)
-                ->setImage("image burger".$i)
-                ->setDescription("burger description ".$i);
+                ->setImage('assets/img/products/burger.jpg')
+                ->setDescription("Le Lorem Ipsum est simplement du faux texte employé dans la composition et la mise en page avant impression. Le Lorem Ipsum est le faux texte standard de l'imprimerie depuis les années 1500, quand un imprimeur anonyme assembla ensemble des morceaux de texte pour réaliser un livre spécimen de polices de texte.  ".$i);
             $this->addReference("Burger".$i, $data);
             $manager->persist($data);
         }
